@@ -37,7 +37,7 @@
         }
     });
 
-    viewer.zoomTo(viewer.entities);
+    //viewer.zoomTo(viewer.entities);
 
 
 

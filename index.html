@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="utf-8">
   <script src="ThreeJS/Cesium/Cesium.js"></script>
   <link href="ThreeJS/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" media="screen">
   <style>
     html,body {
       height: 100%;
@@ -14,6 +15,19 @@
 </head>
 <body>
   <div id="cesiumContainer" style="height: 100%;"></div>
+
+  <div class="backdrop" id="menu">
+    <h2>图层管理</h2>
+    <span><strong>矢量图层</strong></span>
+    <div class="nowrap">
+        <input id="freeMode" name="source" type="radio" checked/>
+        <label for="freeMode">Free</label>
+    </div>
+    <div class="nowrap">
+      <input id="droneMode" name="source" type="radio"/>
+      <label for="droneMode">Drone View</label>
+    </div>
+  </div>
 
   <script src="Sources/Layers.js"></script>
 </body>

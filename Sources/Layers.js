@@ -25,6 +25,8 @@
     viewer._cesiumWidget._creditContainer.style.display = "none";
     viewer.scene.debugShowFramesPerSecond = true; // Display FPS;
 
+    //viewer.imageryLayers.remove(viewer.imageryLayers.get(0));
+
     //add entities
     var redBox = viewer.entities.add({
         name: 'Red box in LinYi',
@@ -38,6 +40,31 @@
     });
 
     //viewer.zoomTo(viewer.entities);
+
+    // Creat an initial camera view
+    var initialPosition = new Cesium.Cartesian3.fromDegrees(-73.998114468289017509, 40.674512895646692812, 2631.082799425431);
+    var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(7.1077496389876024807, -31.987223091598949054, 0.025883251314954971306);
+    var homeCameraView = {
+        destination: initialPosition,
+        orientation: {
+            heading: initialOrientation.heading,
+            pitch: initialOrientation.pitch,
+            roll: initialOrientation.roll
+        }
+    };
+    // Set the initial view
+    viewer.scene.camera.setView(homeCameraView);
+
+    // Override the default home button
+    viewer.homeButton.viewModel.command.beforeExecute.addEventListener(function (e) {
+        e.cancel = true;
+        viewer.scene.camera.flyTo(homeCameraView);
+    });
+
+    // Load geocache points f interest from a KML file
+   // var geocachePromise = Cesium.KmlDataSource.load('./SampleData/sampleGeocacheLocations.kml', kmlOptions);
+
+
 
 
 
